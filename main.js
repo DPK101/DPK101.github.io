@@ -6,10 +6,16 @@ function startGame(){
 	document.turn = 'X';
 	document.winner = null;
 	setMessage(document.turn + " to start");
+	var imgElementToClear = document.getElementById("winnerclipart");
+	imgElementToClear.removeChild(imgElementToClear.childNodes[0]);
 }
 
 function setMessage(msg){
 	document.getElementById("message").innerText = msg;
+}
+
+function fillBoxWithColor(square){
+	square.style.backgroundColor = "#C1FBF5";
 }
 
 function nextMove(square){
@@ -18,6 +24,7 @@ function nextMove(square){
 	}
 	else if(square.innerText === ''){
 		square.innerText = document.turn;
+		fillBoxWithColor(square);
 		switchTurn();
 		document.count += 1;
 	}
@@ -72,4 +79,5 @@ function getBox(number){
 
 function clearBox(number){
 	document.getElementById("s"+number).innerText = "";
+	document.getElementById("s"+number).style.backgroundColor = "";
 }
